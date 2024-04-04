@@ -12,14 +12,9 @@ import {store} from './store /store'
 
 function App() {
 
-console.log('this ')
- console.log( import.meta.env.VITE_APPWRITE_URL)
 const dispatch=useDispatch()
 
   const [loading,setloading]=useState(true)
-
-
-  const [count, setCount] = useState(0)
 
 
 
@@ -55,14 +50,9 @@ else
      
 
 return !loading?(
-
-
-
-<div className='min-h-screen flex-wrap content-between bg-grey-400'>
-
-
+<div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
 <div className='w-full block'>
-  <Headers/>
+  <Header/>
 
 
 todo::::outlet
