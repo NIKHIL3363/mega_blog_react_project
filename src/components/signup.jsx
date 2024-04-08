@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { login as storelogin, logout } from '../store /authslice';
+import { loginUser as storelogin, logout, loginUser } from '../store /authslice';
 import { useDispatch } from 'react-redux';
 import Button from './button';
 import Logo from './Logo';
@@ -12,14 +12,17 @@ import Input from './input';
 
 
 function Signup(props) {
+
     const navigate=useNavigate()
     const dispatch=useDispatch()
-    const {register,handlesubmit}=useForm()
+    const {register,handleSubmit}=useForm()
     const [error,setError]=useState('')
 
 
     const signin=async(data)=>{
-
+      console.log('inside signin')
+      console.log(data)
+      
 
         try{
     
@@ -33,7 +36,7 @@ function Signup(props) {
         if(userdata)
         {
 
-            useDispatch(storelogin(userdata))
+            useDispatch(loginUser(userdata))
             navigate("/")
 
                 
@@ -75,14 +78,14 @@ function Signup(props) {
                  {error && <p className='text-red-500 text-center mt-8'>{error}</p>}
 
 
-        <form onSubmit={handlesubmit(signin)}>
+        <form onSubmit={handleSubmit(signin)}>
             <div className='space-y-5'>
 
          <Input
          label='Name:'
          placeholder='enter your name'
          type='text'
-         {...register('NAME',{required:true})}/>
+         {...register('name',{required:true})}/>
          <Input
          label='Email:'
          placeholder='enter your email id'
@@ -93,6 +96,12 @@ function Signup(props) {
          placeholder='Create Your Password'
          type='Password'
          {...register('password',{required:true})}/>
+
+         <Button
+         
+         label='sign up:'
+         classname='bg-red-500 text-2xl w-full' 
+         />
                         
 
 

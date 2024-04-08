@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { login as storelogin, logout } from '../store /authslice';
+import { loginUser,logout } from '../store /authslice';
 import { useDispatch } from 'react-redux';
 import Button from './button';
 import Logo from './Logo';
@@ -10,10 +10,10 @@ import Input from './input';
 
 
 
-function login(props) {
+function Login(props) {
     const navigate=useNavigate()
     const dispatch=useDispatch()
-    const {register,handlesubmit}=useForm()
+    const {register,handleSubmit}=useForm()
     const [error,setError]=useState('')
 
 
@@ -26,15 +26,29 @@ function login(props) {
             if(session)
             {
 
-               currentuser = await authService.getCurrentUser()
+             const currentuser = await authService.getCurrentUser()
+             console.log('this is cu')
+             console.log(currentuser)
+             const userid=currentuser.$id
+             const username=currentuser.name
+             const password=currentuser.password
 
-               if(currentuser) dispatch(storelogin(currentuser))
+               if(currentuser)
+               { 
 
-               navigate('/')
+                dispatch(loginUser(currentuser))
+                  
+                navigate('/')
+
+               }
             }
         }
         catch(er)
-        {
+        {   
+
+
+            console.log(er.message)
+
            setError(er.message)
 
 
@@ -61,7 +75,7 @@ function login(props) {
                  </p>
                  {error && <p className='text-red-500 text-center mt-8'>{error}</p>}
 
-                   <form onSubmit={handlesubmit(login)} className='mt-8'>
+                   <form onSubmit={handleSubmit(login)} className='mt-8'>
 
                        <div className='space-y-5'>
                         <Input label='Email:' placeholder="enter your email"
@@ -75,7 +89,7 @@ function login(props) {
                         {...register('password',{required:true})}
                         />
 
-                        <Button type='submit'classname='w-full'>Sign In</Button>
+                        <Button type='submit'classname='w-full bg-red-500 text-2xl'/>
 
                        </div>
 
@@ -87,4 +101,4 @@ function login(props) {
     );
 }
 
-export default login;
+export default Login;

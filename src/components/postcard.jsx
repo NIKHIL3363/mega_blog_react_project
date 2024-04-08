@@ -3,7 +3,7 @@ import service2 from '../appwrite/config';
 import { Link } from 'react-router-dom';
 
 
-function postcard({
+function PostCard({
 
 id,
 title,
@@ -34,4 +34,4 @@ featureImage,
     );
 }
 
-export default postcard;
+export default PostCard;

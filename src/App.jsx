@@ -4,10 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Provider, useDispatch } from 'react-redux'
 import authservice, { AuthService } from './appwrite/auth'
-import { login,logout } from './store /authslice'
+import { loginUser,logout } from './store /authslice'
 import Header from './components/Header/header'
 import Footer from './components/Footer/footer'
 import {store} from './store /store'
+import { Outlet } from 'react-router-dom'
+import Home from './pages/Home'
+
+
 
 
 function App() {
@@ -29,7 +33,7 @@ authservice.getCurrentUser().then((data)=>{
 if(data)
 {
 
-  dispatch(login({data}))
+  dispatch(loginUser({data}))
 
 }
 else
@@ -42,6 +46,7 @@ else
 
 
   },[])
+  
 
   
      
@@ -52,10 +57,16 @@ else
 return !loading?(
 <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
 <div className='w-full block'>
+
   <Header/>
 
+  
+  <main>
 
-todo::::outlet
+    <Outlet/>
+  </main>
+
+
 
   <Footer/>
 
@@ -65,7 +76,7 @@ todo::::outlet
 </div>
 
 ):null
-x
+
     
 }
 

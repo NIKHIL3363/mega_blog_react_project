@@ -1,5 +1,4 @@
 import React from 'react';
-import { c } from 'vite/dist/node/types.d-aGj9QkWt';
 
 function Container({children}) {
     return (

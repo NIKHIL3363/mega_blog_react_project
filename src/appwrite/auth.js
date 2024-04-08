@@ -145,6 +145,7 @@ export class AuthService {
 
     async createAccount({email, password, name}) {
         try {
+            console.log('inside try')
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
                 // call another method
@@ -159,7 +160,7 @@ export class AuthService {
 
     async login({email, password}) {
         try {
-            return await this.account.createEmailSession(email, password);
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
             throw error;
         }
@@ -168,12 +169,15 @@ export class AuthService {
     async getCurrentUser() {
         try {
             return await this.account.get();
-        } catch (error) {
+            } 
+        catch (error) {
+            console.log(error)
             throw error
 
          }
 
         return null;
+        
     }
 
     async logout() {

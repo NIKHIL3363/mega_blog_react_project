@@ -1,17 +1,16 @@
 import React from 'react';
 import Container from '../../container/Container';
 import Logo from '../Logo';
-import logoutBtn from './logoutBtn';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-
-
+import LogoutBtn from '/Users/nikhilmutkule/Desktop/Blog_Using_React/src/components/Header/logoutBtn.jsx'
 
 function Header() {
-    const navigate=useNavigate()
-    authstatus=useSelector((state)=>state.auth.status)
+    const navigate=useNavigate();
+    const authstatus=useSelector(states=>states.auth.status)
 
-
+console.log(authstatus)
+    
     const navbar=[{
      name:'home',
      slug:'/',
@@ -62,7 +61,7 @@ function Header() {
                                     <li key={item.name}>
 
 
-                                        <button onClick={()=>navigate(item.slug)} className='inline-block px-6 py-2 duration-200 hover:bg-blue-600 rounded-full'>{item.name}</button>
+                                      <button  onClick={()=>navigate(item.slug)}  className='inline-block px-6 py-2 duration-200 hover:bg-blue-600 rounded-full'>{item.name}</button>
  
 
                                     </li>
@@ -77,7 +76,7 @@ function Header() {
                                 )
                                 }
                                 {authstatus && (<li>
-                                    <logoutBtn/>
+                                    <LogoutBtn/>
                                 </li>)}
                     </ul>
 
@@ -85,6 +84,7 @@ function Header() {
 
                 </nav>
            </Container>
+           
 
         </header>
 )
