@@ -14,7 +14,7 @@ const navigate=useNavigate()
  useEffect(()=>{
 ///todo make this more easy
 
-    if(authentication&& status
+    if(authentication && status
         !==authentication)
     {
         navigate('/login')

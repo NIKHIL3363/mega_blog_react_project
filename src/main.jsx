@@ -11,6 +11,8 @@ import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
 import AddPost from './pages/addpost.jsx'
 import AllPosts from './pages/allposts.jsx'
+import Post from './pages/Post.jsx'
+import EditPost from './pages/EditPost.jsx'
 
 
  const router=createBrowserRouter([
@@ -45,7 +47,18 @@ import AllPosts from './pages/allposts.jsx'
 element:<AllPosts/>
 
 
+},
+{
+  path:"/post/:slug",
+  element:<Post/>
+
+},
+{
+  path:'/editpost/:id',
+  element:<EditPost/>
+
 }
+
 
 
   

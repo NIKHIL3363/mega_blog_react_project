@@ -69,7 +69,7 @@ function Login(props) {
 
                  </div>
                  <h2 className='text-center text-2xl font-bold leading-tight'>sign in to your account</h2>
-                 <p className='mt-2 text-center text-base text-black/60'>dont have account 
+                 <p className='mt-2 text-center text-base text-blue-800'>dont have account ?
                  <Link to='/signup' className='font-medium text-primary transition-all duration-200 hover:underline'>SIGN UP</Link>
 
                  </p>
@@ -89,7 +89,7 @@ function Login(props) {
                         {...register('password',{required:true})}
                         />
 
-                        <Button type='submit'classname='w-full bg-red-500 text-2xl'/>
+                        <Button children='Login' type='submit'classname='w-full bg-red-500 text-2xl' />
 
                        </div>
 

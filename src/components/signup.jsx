@@ -71,10 +71,13 @@ function Signup(props) {
 
                  </div>
                  <h2 className='text-center text-2xl font-bold leading-tight'>sign in to your account</h2>
-                 <p className='mt-2 text-center text-base text-black/60'>dont have account 
-                 <Link to='/signup' className='font-medium text-primary transition-all duration-200 hover:underline'>SIGN UP</Link>
-
+                 <Link to='/login' className='font-medium text-primary transition-all duration-200 hover:underline text-blue-800'>
+                    
+                 <p className='mt-2 text-center text-base text-blue-800'> have a account? Login
                  </p>
+
+                </Link>
+
                  {error && <p className='text-red-500 text-center mt-8'>{error}</p>}
 
 
@@ -98,7 +101,7 @@ function Signup(props) {
          {...register('password',{required:true})}/>
 
          <Button
-         
+         children='sign up '
          label='sign up:'
          classname='bg-red-500 text-2xl w-full' 
          />

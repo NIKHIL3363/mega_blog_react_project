@@ -21,25 +21,37 @@ bucket;
     this.bucket=new Storage(this.client)
     }
 
-    async createPost({title,slug,content,featuredimage,status,userid})
+    async createPost({title,slug,content,featuredImage,status,userid})
     {
+
+       
+
+
         try
         {
-            return await this.database.createDocument(conf.appwriteDatabaseid,conf.appwriteCollectionid,slug,{title,content,featuredimage,status,userid})
+            return await this.database.createDocument(conf.appwriteDatabaseid,conf.appwriteCollectionid,slug,{title,content,featuredImage,status,userid})
 
         }  
         catch(er){
 
-            throw console(er);
+            throw console(er.message);
         }        
 
     }
 
-    async updatepost(slug,{title,content,featuredimage,status}){
+    async updatepost(slug,{title,content,featuredImage,status}){
+       console.log('inside update post ')
+       console.log(slug)
+
+       console.log(title)
+       console.log(content)
+       console.log(featuredImage)
+       console.log(status)
+
 
         try{
 
-            return  await this.database.updateDocument(conf.appwriteDatabaseid,conf.appwriteCollectionid,slug,{title,content,featuredimage,status})
+            return  await this.database.updateDocument(conf.appwriteDatabaseid,conf.appwriteCollectionid,slug,{title,content,featuredImage,status})
 
         }
         catch(error){
@@ -62,13 +74,15 @@ throw error
 }
 
     }
-    async getDocument(slug)
+      async getDocument(documentId)
     {
 
+    
+        
        try{
 
 
-        return await this.database.getDocument(conf.appwriteDatabaseid,conf.appwriteCollectionid,slug)
+        return await this.database.getDocument(conf.appwriteDatabaseid,conf.appwriteCollectionid,documentId)
        }
        catch(error)
        {
@@ -78,11 +92,13 @@ throw error
 
 
     }
-    async getalldocuments(queries=[Query.equal("status","active")])
+    async getalldocuments()
     {
+        console.log('inside get all document config')
 
-        try{
-            return await this.database.listDocuments(conf.appwriteDatabaseid,conf.appwriteCollectionid,queries)
+        try
+        {
+            return await this.database.listDocuments(conf.appwriteDatabaseid,conf.appwriteCollectionid)
         }
         catch(error)
         {
@@ -132,12 +148,18 @@ throw error
         }
 
 
-        async getFilePreview(fileid)
+         getFilePreview(fileid)
         {
 
+             console.log('inside get file preview')
+             try{
+             return  this.bucket.getFilePreview(conf.appwritebucketid,fileid)
+             }
+             catch(error)
+             {
+               console.log(error.message)
 
-            return this.bucket.getFilePreview(conf.appwritebucketid,fileid)
-
+             }
 
             
 

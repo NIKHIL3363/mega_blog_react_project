@@ -2,22 +2,29 @@ import { Editor } from "@tinymce/tinymce-react";
 import React from 'react';
 import { Controller, useForm } from "react-hook-form";
 //how to use editor is on site of tiny mce 
-function RTE(props) {
+function RTE({name,label,control,defaultValue='ting mce editor'}) {
 
 
     return (
-        <div>
-            <Controller
+
+    
+        
+             <Controller
+
+            name={name}
+            label={label}
+            defaultValue={defaultValue}
+            control={control}
+
+             render={({field: {onChange}}) => (
             
-            >
-            <Editor
+             <Editor
+             apiKey='1ah9tei3w39hbhuzwrj7zec5bxwjsj52pqtifhx1feolh5rb'
+
 
             init={{
-           apiKey:'1ah9tei3w39hbhuzwrj7zec5bxwjsj52pqtifhx1feolh5rb',
-
             initialValue: {defaultValue},
             height: 500,
-            readonly:true,
             menubar: true,
             plugins: [
                 "image",
@@ -48,15 +55,10 @@ function RTE(props) {
         onEditorChange={onChange}
 
         />
-                </Controller>
-
+        )}
+        />
             
-           
-
-
-            
-        </div>
-    );
+    )
 }
 
 export default RTE;
