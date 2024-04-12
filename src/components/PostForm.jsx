@@ -84,6 +84,7 @@ if (post) {
  if(res)
  {
     alert('post created')
+    navigate('/')
  }
 
     }     

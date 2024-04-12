@@ -8,7 +8,9 @@ import LogoutBtn from '/Users/nikhilmutkule/Desktop/Blog_Using_React/src/compone
 function Header() {
     const navigate=useNavigate();
     const authstatus=useSelector(states=>states.auth.status)
-
+      const userdata=useSelector(states=>states.auth.userdata)
+      console.log(userdata)
+      
 console.log(authstatus)
     
     const navbar=[{
@@ -47,10 +49,17 @@ console.log(authstatus)
            <Container>
                 <nav className='flex'>
                     <div className='mr-4'> 
+
+
                     <Link to='/'>
                         <Logo width='70px'/>
                     </Link>
  
+
+                    </div>
+                    <div className='text-center mr-16'>
+                    <h2 className='mr-10 text-red-800 font-bold text-3xl'>Welcome</h2>
+                    <h2 className='mr-10 text-red-700 shadow-2xl font-bold text-xl'>{userdata.data.name}</h2>
 
                     </div>
                     <ul className='flex ml-auto'>
